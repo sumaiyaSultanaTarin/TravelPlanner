@@ -54,5 +54,34 @@ namespace TravelPlanner.Controllers
             var data = TripService.GetTripDetails(id);
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
+
+        [HttpGet]
+        [Route("api/Trip/Calendar")]
+        public HttpResponseMessage GetTripsCalendar([FromUri] DateTime startDate , [FromUri] DateTime endDate)
+        {
+            var data = TripService.GetTripsCalendar(startDate, endDate);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
+        [HttpPut]
+        [Route("api/Trip/{id}/set-budget")]
+        public HttpResponseMessage SetBudget(int id,[FromBody] double budget)
+        {
+            TripService.SetBudget(id, budget);
+            return Request.CreateResponse(HttpStatusCode.OK, "Budget Updated Successfully!");
+        }
+        [HttpPut]
+        [Route("api/Trip/{id}/log-expense")]
+        public HttpResponseMessage LogExpense(int id, [FromBody] double actualExpense)
+        {
+            TripService.LogExpense(id, actualExpense);
+            return Request.CreateResponse(HttpStatusCode.OK, "Expense Logged Successfully!");
+        }
+        [HttpGet]
+        [Route("api/Trip/{id}/budget-status")]
+        public HttpResponseMessage GetBudgetStatus(int id)
+        {
+            var data = TripService.GetBudgetStatus(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+        }
     }
 }

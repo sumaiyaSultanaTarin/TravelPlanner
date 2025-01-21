@@ -50,5 +50,33 @@ namespace DAL.Repos
                 return false;
             }
         }
+
+        public bool UpdateBudget(int id, double budget)
+        {
+            var exobj = Get(id);
+            if (exobj != null)
+            {
+                exobj.Budget = budget;
+                return db.SaveChanges() > 0;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateExpense(int id, double actualExpense)
+        {
+            var exobj = Get(id);
+            if (exobj != null)
+            {
+                exobj.ActualExpense = actualExpense;
+                return db.SaveChanges() > 0;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

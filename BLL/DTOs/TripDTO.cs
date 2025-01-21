@@ -13,5 +13,7 @@ namespace BLL.DTOs
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string Itinerary { get; set; }
+        public double Budget { get; set; }
+        public double ActualExpense { get; set; }
     }
 }

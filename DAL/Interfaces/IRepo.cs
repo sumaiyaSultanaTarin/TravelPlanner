@@ -13,6 +13,8 @@ namespace DAL.Interfaces
         CLASS Get(ID id);
         List<CLASS> Get();
         RET Update(CLASS obj);
+        RET UpdateBudget(ID id, double budget);
+        RET UpdateExpense(ID id, double expanse);
 
     }
 }

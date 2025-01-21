@@ -64,6 +64,44 @@ namespace BLL.Services
            
             return GetMapper().Map<TripDTO>(data);
         }
+
+        public static List<TripDTO> GetTripsCalendar(DateTime startDate, DateTime endDate)
+        {
+            var trepo = DataAccessFactory.TripData();
+            var data = trepo.Get()
+                .Where(x => x.StartDate >= startDate && x.EndDate <= endDate).ToList();
+            return GetMapper().Map<List<TripDTO>>(data);
+        }
+
+        public static bool SetBudget(int id, double budget)
+        {
+            var trepo = DataAccessFactory.TripData();
+            return trepo.UpdateBudget(id, budget);
+        }
+
+        public static bool LogExpense(int id, double actualExpense)
+        {
+            var trepo = DataAccessFactory.TripData();
+            return trepo.UpdateExpense(id, actualExpense);
+        }
+
+        public static string GetBudgetStatus(int id)
+        {
+            var trepo = DataAccessFactory.TripData();
+            var data = trepo.Get(id);
+            if (data.Budget > data.ActualExpense)
+            {
+                return "Under Budget";
+            }
+            else if (data.Budget < data.ActualExpense)
+            {
+                return "Over Budget";
+            }
+            else
+            {
+                return "On Budget";
+            }
+        }
     }
 
 }
