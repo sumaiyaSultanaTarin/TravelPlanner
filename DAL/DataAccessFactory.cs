@@ -15,5 +15,24 @@ namespace DAL
         {
             return new TripRepo();
         }
+     
+        public static IBudget BudgetData()
+        {
+            return new TripRepo();
+        }
+
+        public static IPackingItem PackingItemData()
+        {
+            return new PackingRepo();
+        }
+        public static IAuth Auth()
+        {
+            return new UserRepo();
+        }
+
+        public static IRepo<Token, string, Token> TokenData()
+        {
+            return new TokenRepo();
+        }
     }
 }

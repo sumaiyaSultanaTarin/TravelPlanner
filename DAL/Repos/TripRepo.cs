@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    internal class TripRepo : Repo, IRepo<Trip, int, bool>
+    internal class TripRepo : Repo, IRepo<Trip, int, bool>, IBudget
     {
         public bool Create(Trip obj)
         {

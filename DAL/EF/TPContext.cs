@@ -11,6 +11,9 @@ namespace DAL.EF
     public class TPContext : DbContext
     {
         public DbSet<Trip> Trips { get; set; }
+        public DbSet<PackingItem> PackingItems { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Token> Tokens { get; set; }
 
     }
 }

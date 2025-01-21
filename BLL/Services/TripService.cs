@@ -32,7 +32,7 @@ namespace BLL.Services
 
         public static TripDTO Get(int id)
         {
-            var trepo = DataAccessFactory.TripData();
+            var trepo = DataAccessFactory.TripData();   
             var data = trepo.Get(id);
             return GetMapper().Map<TripDTO>(data);
         }
@@ -75,13 +75,13 @@ namespace BLL.Services
 
         public static bool SetBudget(int id, double budget)
         {
-            var trepo = DataAccessFactory.TripData();
+            var trepo = DataAccessFactory.BudgetData();
             return trepo.UpdateBudget(id, budget);
         }
 
         public static bool LogExpense(int id, double actualExpense)
         {
-            var trepo = DataAccessFactory.TripData();
+            var trepo = DataAccessFactory.BudgetData();
             return trepo.UpdateExpense(id, actualExpense);
         }
 
@@ -91,11 +91,11 @@ namespace BLL.Services
             var data = trepo.Get(id);
             if (data.Budget > data.ActualExpense)
             {
-                return "Under Budget";
+                return $"Within Budget, Remainig Balance: ${data.Budget - data.ActualExpense}";
             }
             else if (data.Budget < data.ActualExpense)
             {
-                return "Over Budget";
+                return $"Over Budget by  ${data.Budget - data.ActualExpense}";
             }
             else
             {
